@@ -4,7 +4,8 @@ import Squre from "../../Common/Squre/Squre";
 
 export default function Main() {
   const [numberItem, setNumberItem] = useState("");
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState("X");
+  const [start, setStart] = useState(false);
   const number = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   const boxStyle = {
     width: "100%",
@@ -13,6 +14,11 @@ export default function Main() {
     alignItems: "center",
     margin: "0 auto",
   };
+
+  const buttonClick=()=>{
+    setValue("X");
+    setStart(true)
+  }
 
   
   return (
@@ -27,12 +33,13 @@ export default function Main() {
               <Squre
                 value={value}
                 setValue={setValue}
+                start={start}
               />
             </Grid>
           ))}
         </Grid>
       </Box>
-      <Button variant="contained" color="info" onClick={()=>setValue("")}>
+      <Button variant="contained" color="info" onClick={buttonClick}>
         Start Game
       </Button>
     </Box>

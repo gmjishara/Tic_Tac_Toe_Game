@@ -1,9 +1,10 @@
 import { Button } from "@mui/material";
 import React, { useState, useEffect } from "react";
 
-export default function Squre({ value, setValue }) {
-  const [val, setVal] = useState(value);
+export default function Squre({ value, setValue,start }) {
+  const [val, setVal] = useState("");
   const [isFilled, setIsFilled] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
 
   const cardStyle = {
     width: "100%",
@@ -15,24 +16,28 @@ export default function Squre({ value, setValue }) {
   };
 
   useEffect(() => {
-    if (value === "" || value === "O") {
-      setValue("X");
-    } else {
-      setValue("O");
+    if (isClicked) {
+      if (value === "O") {
+        setValue("X");
+      } else {
+        setValue("O");
+      }
     }
   }, [val]);
 
   useEffect(() => {
-    if (value === "") {
+    if (start) {
       setVal("");
       setIsFilled(false);
+      setIsClicked(false);
     }
-  }, [value]);
+  }, [start]);
 
-  const buttonClick =()=>{
+  const buttonClick = () => {
+    setIsClicked(true);
     setVal(value);
     setIsFilled(true);
-  }
+  };
 
   return (
     <div>
