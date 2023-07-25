@@ -1,5 +1,5 @@
 import { Button } from "@mui/material";
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 export default function Squre({
   value,
@@ -8,6 +8,8 @@ export default function Squre({
   numberItem,
   setNumberItem,
 }) {
+  const [val, setVal] = useState("");
+
   const cardStyle = {
     width: "100%",
     height: "80px",
@@ -16,15 +18,25 @@ export default function Squre({
     fontSize: "25px",
     cursor: "default",
   };
+
+  useEffect(() => {
+    if(value==="" || value === "O"){
+        setValue("X");
+    } else {
+        setValue("O")
+    }
+    
+  }, [val]);
+
   return (
     <div>
       <Button
         variant="contained"
         color="success"
-        onClick={() => setNumberItem(item)}
+        onClick={() => setVal(value)}
         style={cardStyle}
       >
-        {numberItem === item ? <p>{value}</p> : ""}
+        <p>{val}</p>
       </Button>
     </div>
   );

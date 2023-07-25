@@ -4,7 +4,7 @@ import Squre from "../../Common/Squre/Squre";
 
 export default function Main() {
   const [numberItem, setNumberItem] = useState("");
-  const [value, setValue] = useState("X");
+  const [value, setValue] = useState("");
   const number = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   const boxStyle = {
     width: "100%",
@@ -14,7 +14,7 @@ export default function Main() {
     margin: "0 auto",
   };
 
-  useEffect(() => {}, []);
+  
   return (
     <Box sx={boxStyle}>
       <Box sx={{ marginTop: "50px" }}>
