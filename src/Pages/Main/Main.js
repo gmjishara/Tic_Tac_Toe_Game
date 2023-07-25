@@ -25,9 +25,6 @@ export default function Main() {
           {number.map((item) => (
             <Grid item sm={4}>
               <Squre
-                item={item}
-                numberItem={numberItem}
-                setNumberItem={setNumberItem}
                 value={value}
                 setValue={setValue}
               />
@@ -35,7 +32,7 @@ export default function Main() {
           ))}
         </Grid>
       </Box>
-      <Button variant="contained" color="info">
+      <Button variant="contained" color="info" onClick={()=>setValue("")}>
         Start Game
       </Button>
     </Box>

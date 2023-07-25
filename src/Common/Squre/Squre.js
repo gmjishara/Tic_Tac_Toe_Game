@@ -4,11 +4,8 @@ import React, { useState, useEffect } from "react";
 export default function Squre({
   value,
   setValue,
-  item,
-  numberItem,
-  setNumberItem,
 }) {
-  const [val, setVal] = useState("");
+  const [val, setVal] = useState(value);
 
   const cardStyle = {
     width: "100%",
@@ -27,6 +24,12 @@ export default function Squre({
     }
     
   }, [val]);
+
+  useEffect(()=>{
+    if(value===""){
+        setVal("")
+    }
+  },[value])
 
   return (
     <div>
