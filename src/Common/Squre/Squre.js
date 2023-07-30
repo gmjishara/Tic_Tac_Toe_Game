@@ -1,7 +1,7 @@
 import { Button } from "@mui/material";
 import React, { useState, useEffect } from "react";
 
-export default function Squre({ value, setValue,start }) {
+export default function Squre({ value, setValue,start, item, array, setArray }) {
   const [val, setVal] = useState("");
   const [isFilled, setIsFilled] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
@@ -37,6 +37,8 @@ export default function Squre({ value, setValue,start }) {
     setIsClicked(true);
     setVal(value);
     setIsFilled(true);
+    array[item]=value;
+    setArray(array)
   };
 
   return (

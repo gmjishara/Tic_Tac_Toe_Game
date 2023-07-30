@@ -6,7 +6,9 @@ export default function Main() {
   const [numberItem, setNumberItem] = useState("");
   const [value, setValue] = useState("X");
   const [start, setStart] = useState(false);
-  const number = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  const number = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+  const [buttonValue,setButtonValue]=useState([]);
+
   const boxStyle = {
     width: "100%",
     display: "flex",
@@ -17,10 +19,14 @@ export default function Main() {
 
   const buttonClick=()=>{
     setValue("X");
-    setStart(true)
+    setStart(true);
+    setButtonValue([]);
   }
 
-  
+  useEffect(()=>{
+    setStart(false);
+  },[value])
+
   return (
     <Box sx={boxStyle}>
       <Box sx={{ marginTop: "50px" }}>
@@ -34,6 +40,9 @@ export default function Main() {
                 value={value}
                 setValue={setValue}
                 start={start}
+                item={item}
+                setArray={setButtonValue}
+                array={buttonValue}
               />
             </Grid>
           ))}
