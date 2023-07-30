@@ -3,11 +3,11 @@ import React, { useEffect, useState } from "react";
 import Squre from "../../Common/Squre/Squre";
 
 export default function Main() {
-  const [numberItem, setNumberItem] = useState("");
   const [value, setValue] = useState("X");
   const [start, setStart] = useState(false);
   const number = [0, 1, 2, 3, 4, 5, 6, 7, 8];
-  const [buttonValue,setButtonValue]=useState([]);
+  const [buttonValue, setButtonValue] = useState([]);
+  const [win, setWin] = useState(false);
 
   const boxStyle = {
     width: "100%",
@@ -17,15 +17,24 @@ export default function Main() {
     margin: "0 auto",
   };
 
-  const buttonClick=()=>{
+  const buttonClick = () => {
     setValue("X");
     setStart(true);
     setButtonValue([]);
-  }
+  };
 
-  useEffect(()=>{
+  useEffect(() => {
     setStart(false);
-  },[value])
+  }, [value]);
+
+  useEffect(() => {
+    if (
+      buttonValue[0] === buttonValue[1] &&
+      buttonValue[0] === buttonValue[2]
+    ) {
+      setWin(true);
+    }
+  }, [buttonValue]);
 
   return (
     <Box sx={boxStyle}>
