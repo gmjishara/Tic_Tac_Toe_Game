@@ -6,7 +6,7 @@ export default function Main() {
   const [value, setValue] = useState("X");
   const [start, setStart] = useState(false);
   const number = [0, 1, 2, 3, 4, 5, 6, 7, 8];
-  const [buttonValue, setButtonValue] = useState([[],[],[]]);
+  const [buttonValue, setButtonValue] = useState([[], [], []]);
   const [win, setWin] = useState(false);
 
   const boxStyle = {
@@ -20,7 +20,7 @@ export default function Main() {
   const buttonClick = () => {
     setValue("X");
     setStart(true);
-    setButtonValue([[],[],[]]);
+    setButtonValue([[], [], []]);
   };
 
   useEffect(() => {
@@ -28,10 +28,40 @@ export default function Main() {
   }, [value]);
 
   useEffect(() => {
-    
-  }, [buttonValue]);
+    for (let i = 0; i < 3; i++) {
+      let value1 = buttonValue[i][0];
+      let value2 = buttonValue[i][1];
+      let value3 = buttonValue[i][2];
 
-  console.log(buttonValue);
+      let value4 = buttonValue[0][i];
+      let value5 = buttonValue[1][i];
+      let value6 = buttonValue[2][i];
+
+      if ((value1 === value2) === value3) {
+        setWin(true);
+      }
+
+      if ((value4 === value5) === value6) {
+        setWin(true);
+      }
+    }
+
+    let value1 = buttonValue[0][0];
+    let value2 = buttonValue[1][1];
+    let value3 = buttonValue[2][2];
+
+    if ((value1 === value2) === value3) {
+      setWin(true);
+    }
+
+    let value4 = buttonValue[0][2];
+    let value5 = buttonValue[1][1];
+    let value6 = buttonValue[2][0];
+
+    if ((value4 === value5) === value6) {
+      setWin(true);
+    }
+  }, [buttonValue]);
 
   return (
     <Box sx={boxStyle}>
