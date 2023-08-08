@@ -6,7 +6,7 @@ export default function Main() {
   const [value, setValue] = useState("X");
   const [start, setStart] = useState(false);
   const number = [0, 1, 2, 3, 4, 5, 6, 7, 8];
-  const [buttonValue, setButtonValue] = useState([]);
+  const [buttonValue, setButtonValue] = useState([[],[],[]]);
   const [win, setWin] = useState(false);
 
   const boxStyle = {
@@ -20,7 +20,7 @@ export default function Main() {
   const buttonClick = () => {
     setValue("X");
     setStart(true);
-    setButtonValue([]);
+    setButtonValue([[],[],[]]);
   };
 
   useEffect(() => {
@@ -28,13 +28,10 @@ export default function Main() {
   }, [value]);
 
   useEffect(() => {
-    if (
-      buttonValue[0] === buttonValue[1] &&
-      buttonValue[0] === buttonValue[2]
-    ) {
-      setWin(true);
-    }
+    
   }, [buttonValue]);
+
+  console.log(buttonValue);
 
   return (
     <Box sx={boxStyle}>
