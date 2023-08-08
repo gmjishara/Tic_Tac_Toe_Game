@@ -20,6 +20,7 @@ export default function Main() {
   const buttonClick = () => {
     setValue("X");
     setStart(true);
+    setWin(false);
     setButtonValue([[], [], []]);
   };
 
@@ -28,6 +29,7 @@ export default function Main() {
   }, [value]);
 
   useEffect(() => {
+    console.log("working")
     for (let i = 0; i < 3; i++) {
       let value1 = buttonValue[i][0];
       let value2 = buttonValue[i][1];
@@ -37,31 +39,37 @@ export default function Main() {
       let value5 = buttonValue[1][i];
       let value6 = buttonValue[2][i];
 
-      if ((value1 === value2) === value3) {
+      console.log("value1: "+value1)
+      console.log("value2: "+value2)
+      console.log("value3: "+value3)
+
+      if (value1 && value1 === value2 && value1 === value3) {
         setWin(true);
       }
 
-      if ((value4 === value5) === value6) {
+      if (value4 && value4 === value5 && value4 === value6) {
         setWin(true);
       }
     }
 
-    let value1 = buttonValue[0][0];
-    let value2 = buttonValue[1][1];
-    let value3 = buttonValue[2][2];
+    let value7 = buttonValue[0][0];
+    let value8 = buttonValue[1][1];
+    let value9 = buttonValue[2][2];
 
-    if ((value1 === value2) === value3) {
+    if (value7 && value7 === value8 && value7 === value9) {
       setWin(true);
     }
 
-    let value4 = buttonValue[0][2];
-    let value5 = buttonValue[1][1];
-    let value6 = buttonValue[2][0];
+    let value10 = buttonValue[0][2];
+    let value11 = buttonValue[1][1];
+    let value12 = buttonValue[2][0];
 
-    if ((value4 === value5) === value6) {
+    if (value10 && value10 === value11 && value10 === value12) {
       setWin(true);
     }
   }, [buttonValue]);
+
+  // console.log(win);
 
   return (
     <Box sx={boxStyle}>
@@ -77,7 +85,7 @@ export default function Main() {
                 setValue={setValue}
                 start={start}
                 item={item}
-                setArray={setButtonValue}
+                setArray={(val)=> {console.log(val)}}
                 array={buttonValue}
               />
             </Grid>
