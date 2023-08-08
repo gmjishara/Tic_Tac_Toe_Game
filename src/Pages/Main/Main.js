@@ -29,7 +29,7 @@ export default function Main() {
   }, [value]);
 
   useEffect(() => {
-    console.log("working")
+    console.log("working");
     for (let i = 0; i < 3; i++) {
       let value1 = buttonValue[i][0];
       let value2 = buttonValue[i][1];
@@ -38,10 +38,6 @@ export default function Main() {
       let value4 = buttonValue[0][i];
       let value5 = buttonValue[1][i];
       let value6 = buttonValue[2][i];
-
-      console.log("value1: "+value1)
-      console.log("value2: "+value2)
-      console.log("value3: "+value3)
 
       if (value1 && value1 === value2 && value1 === value3) {
         setWin(true);
@@ -69,8 +65,6 @@ export default function Main() {
     }
   }, [buttonValue]);
 
-  // console.log(win);
-
   return (
     <Box sx={boxStyle}>
       <Box sx={{ marginTop: "50px" }}>
@@ -85,7 +79,9 @@ export default function Main() {
                 setValue={setValue}
                 start={start}
                 item={item}
-                setArray={(val)=> {console.log(val)}}
+                setArray={(val) => {
+                  setButtonValue(val);
+                }}
                 array={buttonValue}
               />
             </Grid>
